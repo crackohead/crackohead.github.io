@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caleb Oh Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&family=Red+Hat+Text:wght@400;500;600&family=Red+Hat+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: a personal site, confident and precise, an engineer who ships software
+   IDEA an engineering drawing sheet: blueprint grid, dimension lines, a title block per project
+   PICTURE a robot arm launching a projectile arc across the sheet to a target, the path drawn as a traced trajectory
+   COLOUR oxford blue #0b1f4b band and footer, white sheet, magenta #e0115f for the trajectory and links; night #070f26
+   TYPE Red Hat Display 900/700 + Red Hat Text, Red Hat Mono only for dimensions on the drawing
+   LAYOUT name across the top, wide drawing strip under it; work as a 3-column grid with a featured card; phone stacks */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#070f26);--ink:light-dark(#0b1f4b,#e8ecf7);--soft:light-dark(#4a5a80,#a9b4d0);--line:light-dark(#d7ddeb,#1d2a4f);--panel:light-dark(#f4f6fb,#0c1838);--blue:#0b1f4b;--mag:#e0115f;--magink:light-dark(#c40d52,#ff5c93)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Red Hat Text",system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3{font-family:"Red Hat Display",system-ui,sans-serif;letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(28px,4vw,64px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.hero{background:var(--blue);color:#fff;padding-bottom:0}
+nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;margin-bottom:clamp(28px,5vw,56px)}
+nav .mark{font:700 18px "Red Hat Display",sans-serif;text-decoration:none}
+nav ul{display:flex;flex-wrap:wrap;gap:4px 22px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;opacity:.85;padding:10px 0;display:inline-block}
+nav a:hover,nav a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:5px}
+.top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 48px;align-items:end}
+.top h1{font-size:clamp(56px,10vw,120px);font-weight:900}
+.intro{font-size:17px;max-width:46ch;color:#d6ddef;margin:0 0 6px}
+.intro b{color:#fff;font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:6px;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,.55)}
+.btn.main{background:var(--mag);border-color:var(--mag)}
+.btn:hover,.btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.sheet{position:relative;height:clamp(230px,30vw,360px);margin-top:clamp(24px,4vw,44px)}
+.sheet svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sheet text{font:500 12px "Red Hat Mono",monospace;fill:#9fb0d8}
+#arc{stroke-dasharray:1400;stroke-dashoffset:1400;animation:trace 2.4s .4s ease-out forwards}
+@keyframes trace{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){#arc{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
+section h2{font-size:clamp(32px,4.4vw,48px);font-weight:700;margin-bottom:10px}
+.lede{color:var(--soft);max-width:62ch;margin:0 0 32px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;transition:border-color .15s}
+.card:hover,.card:focus-visible{border-color:var(--mag);outline:none}
+.card .art{background:var(--blue);aspect-ratio:16/9;display:grid;place-items:center;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px}
+.card .art svg{width:46%;height:auto;max-height:78%}
+.card.feat{grid-column:span 2}
+.card.feat .art{aspect-ratio:auto;min-height:260px}
+.card.feat .art svg{width:30%}
+.body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.body h3{font-size:24px}
+.meta{font-size:14px;color:var(--soft);display:flex;flex-wrap:wrap;gap:4px 14px}
+.body p{margin:0}
+.award{font-weight:600;color:var(--magink)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.tags span{font-size:13px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.go{font-weight:600;color:var(--magink);font-size:15px}
+.xp{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:8px 40px;padding:26px 0;border-bottom:1px solid var(--line)}
+.when{color:var(--soft);font-size:15px;white-space:nowrap}
+.row h3{font-size:24px;margin-bottom:4px}
+.row h3 a{color:var(--magink);text-underline-offset:4px}
+.org{color:var(--soft);margin-bottom:10px}
+.row ul{margin:0;padding-left:20px}
+.row li{margin:4px 0;max-width:72ch}
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.sk{border-top:3px solid var(--ink);padding-top:14px}
+.sk h3{font-size:20px;margin-bottom:10px}
+.sk p{margin:0;color:var(--soft)}
+footer{background:var(--blue);color:#fff}
+.foot{max-width:640px}
+.foot h2{font-size:clamp(36px,5vw,56px);font-weight:900}
+.contact{list-style:none;margin:0;padding:0;font-size:17px}
+.contact li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.2);display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px}
+.contact span{color:#9fb0d8}
+.contact a{text-underline-offset:4px;overflow-wrap:anywhere}
+.small{margin-top:40px;font-size:14px;color:#9fb0d8}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card.feat{grid-column:span 2}.card.feat .art svg{width:36%}}
+@media(max-width:760px){.top,.foot{grid-template-columns:minmax(0,1fr)}.skills{grid-template-columns:minmax(0,1fr)}.row{grid-template-columns:minmax(0,1fr);gap:4px}}
+@media(max-width:600px){.grid{grid-template-columns:minmax(0,1fr)}.card.feat{grid-column:auto}.card.feat .art{min-height:0;aspect-ratio:16/9}.card.feat .art svg,.card .art svg{width:40%}nav ul{gap:0 16px}}
+</style>
+</head>
+<body>
+
+<header class="band hero" id="top">
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="mark" href="#top">Caleb Oh</a>
+      <ul>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="top">
+      <h1>Caleb Oh</h1>
+      <div>
+        <p class="intro"><b>Mechatronics engineering student at McMaster University</b> who writes software for the web, for games and for machines. Previously a software developer intern at BMO; now building computer vision for competition robots.</p>
+        <div class="cta">
+          <a class="btn main" href="#work">See my projects</a>
+          <a class="btn" href="https://www.linkedin.com/in/caleb--oh" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="sheet" aria-hidden="true">
+      <svg id="draw" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <pattern id="g" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffffff" stroke-opacity=".07"/></pattern>
+          <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b9c6e6"/></linearGradient>
+        </defs>
+        <rect width="1200" height="360" fill="url(#g)"/>
+        <line x1="0" y1="340" x2="1200" y2="340" stroke="#ffffff" stroke-opacity=".35"/>
+        <!-- arm -->
+        <g transform="translate(230 340)">
+          <ellipse cx="0" cy="0" rx="92" ry="10" fill="#000" opacity=".25"/>
+          <rect x="-70" y="-30" width="140" height="30" rx="4" fill="url(#metal)"/>
+          <rect x="-70" y="-30" width="140" height="7" rx="3" fill="#fff"/>
+          <rect x="-34" y="-74" width="68" height="46" rx="6" fill="#d2dbf0"/>
+          <g transform="translate(0 -74) rotate(-62)">
+            <rect x="-16" y="-16" width="200" height="32" rx="16" fill="url(#metal)"/>
+            <rect x="-16" y="-16" width="200" height="9" rx="5" fill="#fff"/>
+            <circle r="24" fill="#fff" stroke="#0b1f4b" stroke-width="4"/><circle r="8" fill="#0b1f4b"/>
+            <g transform="translate(184 0) rotate(92)">
+              <rect x="-13" y="-13" width="160" height="26" rx="13" fill="url(#metal)"/>
+              <rect x="-13" y="-13" width="160" height="7" rx="4" fill="#fff"/>
+              <circle r="20" fill="#fff" stroke="#0b1f4b" stroke-width="4"/><circle r="7" fill="#0b1f4b"/>
+              <g transform="translate(150 0)">
+                <circle r="15" fill="#fff" stroke="#0b1f4b" stroke-width="4"/>
+                <path d="M8 -12 L40 -20 L44 -12 L16 -4 Z" fill="#d2dbf0"/>
+                <path d="M8 12 L40 20 L44 12 L16 4 Z" fill="#d2dbf0"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <!-- dimension -->
+        <g stroke="#9fb0d8" stroke-width="1">
+          <line x1="160" y1="352" x2="300" y2="352"/><line x1="160" y1="346" x2="160" y2="358"/><line x1="300" y1="346" x2="300" y2="358"/>
+        </g>
+        <!-- trajectory -->
+        <path id="arc" d="M452 112 Q 760 -70 1040 300" fill="none" stroke="#e0115f" stroke-width="4" stroke-linecap="round"/>
+        <g fill="#e0115f"><circle cx="452" cy="112" r="7"/></g>
+        <g stroke="#ffffff" stroke-opacity=".35" stroke-dasharray="4 6"><line x1="452" y1="112" x2="452" y2="340"/><line x1="1040" y1="40" x2="1040" y2="340"/></g>
+        <!-- target -->
+        <g transform="translate(1040 300)">
+          <circle r="34" fill="none" stroke="#fff" stroke-width="3"/>
+          <circle r="20" fill="none" stroke="#fff" stroke-width="3"/>
+          <circle r="7" fill="#e0115f"/>
+          <line x1="-48" y1="0" x2="48" y2="0" stroke="#fff" stroke-opacity=".5"/><line x1="0" y1="-48" x2="0" y2="40" stroke="#fff" stroke-opacity=".5"/>
+        </g>
+        <text x="468" y="104">launch (x₀, y₀)</text>
+        <text x="760" y="40">y(x) = x·tanθ − g·x² / (2v₀²cos²θ)</text>
+        <text x="1056" y="252">target lock</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="band" id="work">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lede">Games, apps, quantum code and robots, mostly built against a deadline with a team. Each card opens the full project.</p>
+    <div class="grid" id="projects"></div>
+  </div>
+</section>
+
+<section class="band" id="experience" style="padding-top:0">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="lede">Where I have shipped code and led teams.</p>
+    <div class="xp">
+      <div class="row">
+        <div class="when">May 2026 – Aug. 2026</div>
+        <div>
+          <h3>Software Developer Intern, <a href="https://www.bmo.com" target="_blank" rel="noopener">BMO</a></h3>
+          <div class="org">Toronto, ON</div>
+          <ul>
+            <li>Built and shipped a TypeScript/JavaScript tool tracking AI-tool productivity for project managers; containerized it with Docker and automated deployment with shell scripts.</li>
+            <li>Developed Python-based AI agent workflows that automate repetitive engineering processes.</li>
+            <li>Set up Husky git hooks to run linting and tests on every commit, catching defects before code review.</li>
+            <li>Codified coding-standard skills for AI/LLM developer tooling, enforcing consistency across languages.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Oct. 2026 – Present</div>
+        <div>
+          <h3>Embedded Systems Team Member, <a href="https://macrobomaster.com/Robots.html" target="_blank" rel="noopener">MacRoboMaster</a></h3>
+          <div class="org">McMaster RoboMaster Robotics Team, Hamilton, ON</div>
+          <ul>
+            <li>Building computer vision software that detects targets and computes projectile trajectories for DJI RoboMaster competition robots.</li>
+            <li>Integrating vision output with the robots' embedded control systems alongside the mechanical and software sub-teams.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Sept. 2025 – Dec. 2025</div>
+        <div>
+          <h3>Project Manager, 1P13 Engineering Design</h3>
+          <div class="org">McMaster University, Hamilton, ON</div>
+          <ul>
+            <li>Led a first-year team from requirements to a working robotic-arm prototype, coordinating the mechanical and software workstreams to stay on schedule.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="skills" style="padding-top:0">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="lede">B.Eng. Mechatronics Engineering, McMaster University, expected April 2029.</p>
+    <div class="skills">
+      <div class="sk"><h3>Languages</h3><p>TypeScript, JavaScript, Python, C, C++, C#, Swift, Shell, MATLAB, HTML/CSS</p></div>
+      <div class="sk"><h3>Tools &amp; platforms</h3><p>Git, GitHub, Docker, Husky, AWS, Unity, Blender, Visual Studio</p></div>
+      <div class="sk"><h3>Hardware</h3><p>Arduino, ESP8266, sensor integration, circuit design, CAD, 3D printing</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="band" id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <ul class="contact">
+        <li><span>Email</span><a href="mailto:caleboh3@gmail.com">caleboh3@gmail.com</a></li>
+        <li><span>Phone</span><a href="tel:+16475408148">647-540-8148</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/caleb--oh" target="_blank" rel="noopener">linkedin.com/in/caleb--oh</a></li>
+      </ul>
+    </div>
+    <p class="small">© 2026 Caleb Oh · Toronto, ON</p>
+  </div>
+</footer>
+
+<script>
+{
+  const W = '#ffffff', M = '#e0115f';
+  const alien = ['..XXXXXX..','.XXXXXXXX.','XX.XXXX.XX','XXXXXXXXXX','.XXXXXXXX.','..X....X..','.X......X.'];
+  const px = alien.map((r,y)=>[...r].map((c,x)=>c==='X'?`<rect x="${x*10}" y="${y*10}" width="9" height="9" fill="${(y===2&&(x===2||x===7))?M:W}"/>`:'').join('')).join('');
+  const blades = Array.from({length:6},(_,i)=>`<path d="M0 0 L60 -14 A62 62 0 0 1 52 30 Z" transform="rotate(${i*60})" fill="${i%2?'#d2dbf0':W}" stroke="#0b1f4b" stroke-width="2"/>`).join('');
+  const art = {
+    shutter:`<svg viewBox="-70 -70 140 140" role="img" aria-label="Camera shutter"><circle r="66" fill="none" stroke="${W}" stroke-width="4"/>${blades}<circle r="16" fill="#0b1f4b" stroke="${M}" stroke-width="4"/></svg>`,
+    tamago:`<svg viewBox="-5 -5 110 80" role="img" aria-label="Pixel alien">${px}</svg>`,
+    qsite:`<svg viewBox="0 0 160 100" role="img" aria-label="Quantum circuit">${[20,50,80].map(y=>`<line x1="0" y1="${y}" x2="160" y2="${y}" stroke="${W}" stroke-width="3"/>`).join('')}<rect x="20" y="6" width="28" height="28" rx="3" fill="${W}"/><text x="34" y="26" text-anchor="middle" font-family="Red Hat Display" font-weight="700" font-size="18" fill="#0b1f4b">H</text><line x1="80" y1="20" x2="80" y2="62" stroke="${M}" stroke-width="3"/><circle cx="80" cy="20" r="6" fill="${M}"/><circle cx="80" cy="50" r="12" fill="none" stroke="${M}" stroke-width="3"/><line x1="80" y1="38" x2="80" y2="62" stroke="${M}" stroke-width="3"/><line x1="68" y1="50" x2="92" y2="50" stroke="${M}" stroke-width="3"/><rect x="112" y="66" width="30" height="28" rx="3" fill="none" stroke="${W}" stroke-width="3"/><path d="M117 88 A11 11 0 0 1 137 88" fill="none" stroke="${W}" stroke-width="2.5"/><line x1="127" y1="88" x2="135" y2="72" stroke="${M}" stroke-width="2.5"/></svg>`,
+    qarm:`<svg viewBox="0 0 140 120" role="img" aria-label="Geared gripper"><rect x="50" y="0" width="40" height="34" rx="4" fill="${W}"/><circle cx="52" cy="54" r="20" fill="none" stroke="${W}" stroke-width="7" stroke-dasharray="6 4"/><circle cx="88" cy="54" r="20" fill="none" stroke="${W}" stroke-width="7" stroke-dasharray="6 4"/><circle cx="52" cy="54" r="5" fill="${M}"/><circle cx="88" cy="54" r="5" fill="${M}"/><path d="M40 70 L22 116 L36 118 L56 74 Z" fill="#d2dbf0"/><path d="M100 70 L118 116 L104 118 L84 74 Z" fill="#d2dbf0"/><circle cx="70" cy="104" r="12" fill="${M}"/></svg>`,
+    box:`<svg viewBox="0 0 140 120" role="img" aria-label="Motorized storage box"><path d="M20 50 L70 30 L120 50 L70 70 Z" fill="${W}"/><path d="M20 50 L70 70 L70 116 L20 96 Z" fill="#d2dbf0"/><path d="M120 50 L70 70 L70 116 L120 96 Z" fill="#9fb0d8"/><path d="M20 50 L70 30 L64 6 L14 26 Z" fill="none" stroke="${W}" stroke-width="3"/><circle cx="96" cy="80" r="11" fill="#0b1f4b" stroke="${M}" stroke-width="3"/><path d="M96 69 v-6 M96 91 v6" stroke="${M}" stroke-width="3"/></svg>`
+  };
+  const projects = [
+    {k:'shutter',feat:1,t:'The Shutter',when:'Game jam',award:'Placed 14th of 100+ teams',d:'A first-person puzzle-horror game. You play a journalist investigating a decades-old death at an abandoned school, digging through old school records while surviving a vengeful spirit. Built in Unity by a team of four, with original 3D models made in Blender, and playable in the browser.',tags:['C#','Unity','Blender','WebGL'],url:'https://earlydrill.itch.io/the-shutter',go:'Play on itch.io'},
+    {k:'qsite',t:'Q-SITE Hacks 2026',when:'Sept. 2026 · Toronto',award:'1st IBM Quantum, 2nd Overall, 3rd IonQ',d:'Quantum computing hackathon entry for the computational track, competing in the IBM and IonQ coding challenges.',tags:['Python','Quantum computing'],url:'https://github.com/4oeuhtns/q-site-hacks-2026/tree/computational-track',go:'View code on GitHub'},
+    {k:'tamago',t:'TamaGO',when:'Jan. 2026 · DeltaHacks 12',d:'An iOS app paired with a Tamagotchi-style alien that rewards you for showing up to class. The Swift app checks your location and sends status through Adafruit IO to an ESP8266 and Arduino, which drives an LCD and buzzers.',tags:['Swift','C++','Arduino','Adafruit IO','Figma'],url:'https://devpost.com/software/tamago-pbniw9',go:'Read on Devpost'},
+    {k:'qarm',t:'Q-arm End Effector',when:'Sept. – Dec. 2025',d:'A CAD-designed, 3D-printed geared end effector that grasps objects of varying size and shape, with Python control logic that lets the arm detect, grasp and place objects in target zones on its own.',tags:['Python','CAD','3D printing'],url:'https://app.notion.com/p/Q-arm-End-Effector-Project-2dd87d68703f81b6a451fc6da01e919e?source=copy_link',go:'Read the write-up'},
+    {k:'box',t:'Power in the Community',when:'Engineering design',d:'A motor-powered storage box designed for a community need. The full design process, CAD and results are in the write-up.',tags:['Motors','CAD','Design'],url:'https://app.notion.com/p/Power-in-the-Community-Motor-Powered-Storage-Box-2dd87d68703f8150b19af59f500bc34b?source=copy_link',go:'Read the write-up'}
+  ];
+  document.getElementById('projects').innerHTML = projects.map(p=>`
+    <a class="card${p.feat?' feat':''}" href="${p.url}" target="_blank" rel="noopener">
+      <div class="art">${art[p.k]}</div>
+      <div class="body">
+        <h3>${p.t}</h3>
+        <div class="meta"><span>${p.when}</span></div>
+        ${p.award?`<div class="award">${p.award}</div>`:''}
+        <p>${p.d}</p>
+        <div class="tags">${p.tags.map(x=>`<span>${x}</span>`).join('')}</div>
+        <span class="go">${p.go} →</span>
+      </div>
+    </a>`).join('');
+}
+</script>
+</body>
+</html>
